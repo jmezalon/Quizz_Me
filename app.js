@@ -5,6 +5,7 @@ const quizzes = require("./routes/quizzes.js");
 const topics = require("./routes/topics.js");
 const questions = require("./routes/questions.js");
 const answers = require("./routes/answers.js");
+const decoys = require("./routes/decoys.js");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -13,6 +14,7 @@ app.use("/quizzes", quizzes);
 app.use("/topics", topics);
 app.use("/questions", questions);
 app.use("/answers", answers);
+app.use("/decoys", decoys);
 
 app.get("/", (req, res) => {
   res.send("this is the home page");
