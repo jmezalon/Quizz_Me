@@ -1,0 +1,45 @@
+.navbar {
+  background: orange;
+  display: flex;
+  justify-content: space-around;
+  height: 20px;
+  padding-top: 20px;
+}
+
+.navbar,
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  color: darkblue;
+}
+
+a:hover,
+.list-title p:hover {
+  background: yellow;
+}
+
+.sublist-title-hide {
+  display: none;
+}
+
+.show {
+  background-color: orange;
+  margin-top: 5%;
+  font-size: 15px;
+  /* position: relative;
+  top: 22%;
+  left: 1%; */
+}
+
+#edit-img {
+  height: 17px;
+  width: 17px;
+}
+
+#delete-img {
+  height: 22px;
+  width: 22px;
+}
