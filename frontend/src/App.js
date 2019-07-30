@@ -1,7 +1,9 @@
 import React from "react";
 import { Navbar } from "./components/Navbar";
-import { Route } from "react-router-dom";
-// , Switch, withRouter, Link
+import CreateQuiz from "./components/CreateQuiz";
+import { Home } from "./components/Home";
+import { Route, Switch } from "react-router-dom";
+// , withRouter, Link
 import "./App.css";
 
 class App extends React.Component {
@@ -23,20 +25,22 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Route
-          exact
-          path="/"
-          render={props => (
-            <Navbar
-              {...props}
-              handleSublist={this.handleSublist}
-              handleSublistHide={this.handleSublistHide}
-              showList={this.state.showList}
-              showList2={this.state.showList2}
-              handleReset={this.handleReset}
-            />
-          )}
+        <Navbar
+          handleSublist={this.handleSublist}
+          handleSublistHide={this.handleSublistHide}
+          showList={this.state.showList}
+          showList2={this.state.showList2}
+          handleReset={this.handleReset}
         />
+
+        <Switch>
+          <Route component={Home} />
+          <Route
+            exact
+            path="/myquiz"
+            render={props => <CreateQuiz {...props} />}
+          />
+        </Switch>
       </div>
     );
   }
