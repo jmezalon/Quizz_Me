@@ -10,7 +10,10 @@ class App extends React.Component {
   state = {
     quizzes: [],
     showList: false,
-    showList2: false
+    showList2: false,
+    amount: 5,
+    title: "",
+    topic: ""
   };
   handleSublist = () => {
     this.setState({ showList: true, showList2: false });
@@ -22,7 +25,24 @@ class App extends React.Component {
   handleReset = () => {
     this.setState({ showList: false, showList2: false });
   };
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  addOne = event => {
+    event.preventDefault();
+    this.setState({ amount: parseInt(this.state.amount) + 1 });
+  };
+
+  addFive = event => {
+    event.preventDefault();
+    this.setState({ amount: parseInt(this.state.amount) + 5 });
+  };
+
   render() {
+    const { amount, title, topic } = this.state;
+
     return (
       <div className="App">
         <Navbar
@@ -34,11 +54,21 @@ class App extends React.Component {
         />
 
         <Switch>
-          <Route component={Home} />
+          <Route exact path="/" component={Home} />
           <Route
             exact
             path="/myquiz"
-            render={props => <CreateQuiz {...props} />}
+            render={props => (
+              <CreateQuiz
+                {...props}
+                amount={amount}
+                title={title}
+                topic={topic}
+                handleChange={this.handleChange}
+                addOne={this.addOne}
+                addFive={this.addFive}
+              />
+            )}
           />
         </Switch>
       </div>
