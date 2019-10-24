@@ -29,9 +29,11 @@ a:hover,
   background-color: orange;
   margin-top: 5%;
   font-size: 15px;
-  /* position: relative;
+  position: relative;
+  /*
   top: 22%;
   left: 1%; */
+  z-index: 0;
 }
 
 #edit-img {

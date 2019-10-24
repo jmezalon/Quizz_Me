@@ -31,7 +31,6 @@ export const Navbar = ({
                   alt=""
                   src="https://www.shareicon.net/data/512x512/2016/08/06/807541_edit_512x512.png"
                 />
-                quiz
               </p>
             </Link>
             <Link to="/deletequiz">
@@ -41,11 +40,13 @@ export const Navbar = ({
                   alt=""
                   src="https://cdn1.iconfinder.com/data/icons/device-apps-settings/2048/Recycle_bin-512.png"
                 />
-                quiz
               </p>
             </Link>
           </section>
         </div>
+      </div>
+      <div>
+        <Link to="/quizzes">Quizzes</Link>
       </div>
       <div
         onMouseOver={handleSublistHide}
@@ -57,9 +58,18 @@ export const Navbar = ({
         </Link>
         <div className={!showList2 ? "sublist-title-hide" : "show"}>
           <section onMouseOver={handleSublistHide} onMouseLeave={handleReset}>
-            <p>Math</p>
-            <p>Science</p>
-            <p>English</p>
+            <Link to="/quizlist/sin">
+              <p>Sin</p>
+            </Link>
+            <Link to="/quizlist/love">
+              <p>Love</p>
+            </Link>
+            <Link to="/quizlist/salvation">
+              <p>Salvation</p>
+            </Link>
+            <Link to="/quizlist">
+              <p>others</p>
+            </Link>
           </section>
         </div>
       </div>

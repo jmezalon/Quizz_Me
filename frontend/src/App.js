@@ -1,6 +1,8 @@
 import React from "react";
 import { Navbar } from "./components/Navbar";
 import CreateQuiz from "./components/CreateQuiz";
+import { QuizzList } from "./components/QuizzList";
+import { CurrentQuiz } from "./components/CurrentQuiz";
 import { Home } from "./components/Home";
 import { Route, Switch } from "react-router-dom";
 // , withRouter, Link
@@ -70,6 +72,8 @@ class App extends React.Component {
               />
             )}
           />
+          <Route exact path="/quizlist" component={QuizzList} />
+          <Route exact path="/quizlist" component={CurrentQuiz} />
         </Switch>
       </div>
     );

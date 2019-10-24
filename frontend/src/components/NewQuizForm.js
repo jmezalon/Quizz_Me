@@ -39,6 +39,9 @@ export const NewQuizForm = ({
           <div className="selection-add">
             <button onClick={addOne}>add 1</button>
             <button onClick={addFive}>add 5</button>
+            <div className="start-quiz-button">
+              <input type="button" value="start" />
+            </div>
           </div>
         </div>
       </form>
