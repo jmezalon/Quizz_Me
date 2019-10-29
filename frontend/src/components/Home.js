@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 export const Home = () => {
   // change this to when the user visit the link
   const [visited, setVisited] = useState(false);
+
   return (
     <div className="home">
       <div className="home-title">
@@ -23,13 +24,15 @@ export const Home = () => {
             </ol>
             <li>What is Love?</li>
           </ul>
-          <input
-            type="button"
-            value={!visited ? "Take your first Quiz" : "continue"}
-            onClick={() => setVisited(true)}
-          />
+          <Link to={"/quiz/1"}>
+            <input
+              type="button"
+              value={!visited ? "Take your first Quiz" : "continue"}
+              onClick={() => setVisited(true)}
+            />
+          </Link>
           <p>
-            find more <Link to={"/quizzes"}>quizzes here</Link>
+            find more <Link to={"/quizlist"}>quizzes here!</Link>
           </p>
         </div>
       </div>

@@ -46,7 +46,7 @@ export const Navbar = ({
         </div>
       </div>
       <div>
-        <Link to="/quizzes">Quizzes</Link>
+        <Link to="/quizlist">Quizzes</Link>
       </div>
       <div
         onMouseOver={handleSublistHide}
