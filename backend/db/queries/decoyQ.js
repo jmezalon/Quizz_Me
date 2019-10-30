@@ -1,5 +1,30 @@
 const { db } = require("./connections.js");
 
+const getAllDecoyAndAnswerForOneQuestion = (req, res, next) => {
+  let questionId = parseInt(req.params.id);
+  db.any(
+    `SELECT decoys, d.correct_ans
+FROM answers AS d
+JOIN questions AS q ON q.id = d.question_id
+FULL JOIN
+(SELECT ARRAY_AGG(DISTINCT decoys.decoy_ans) AS decoys, question_id
+FROM decoys
+GROUP BY decoys.question_id) AS decoys
+ON q.id = decoys.question_id
+
+ WHERE q.id = $1`,
+    [questionId]
+  )
+    .then(decoys => {
+      res.status(200).json({
+        status: "Success",
+        decoys: decoys,
+        message: "this is all the decoys"
+      });
+    })
+    .catch(err => next(err));
+};
+
 const getAllDecoyForOneQuestion = (req, res, next) => {
   let questionId = parseInt(req.params.id);
   db.any("SELECT decoys.decoy_ans FROM decoys WHERE question_id=$1", [
@@ -49,5 +74,6 @@ const deleteDecoy = (req, res, next) => {
 module.exports = {
   getAllDecoyForOneQuestion,
   newDecoy,
-  deleteDecoy
+  deleteDecoy,
+  getAllDecoyAndAnswerForOneQuestion
 };

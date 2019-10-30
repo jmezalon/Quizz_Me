@@ -3,12 +3,15 @@ const router = express.Router();
 const {
   newDecoy,
   deleteDecoy,
-  getAllDecoyForOneQuestion
+  getAllDecoyForOneQuestion,
+  getAllDecoyAndAnswerForOneQuestion
 } = require("../db/queries/decoyQ.js");
 
 router.delete("/delete/:id", deleteDecoy);
 
 router.get("/question/:id", getAllDecoyForOneQuestion);
+
+router.get("/answers/:id", getAllDecoyAndAnswerForOneQuestion);
 
 router.post("/", newDecoy);
 
