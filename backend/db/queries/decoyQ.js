@@ -3,7 +3,7 @@ const { db } = require("./connections.js");
 const getAllDecoyAndAnswerForOneQuestion = (req, res, next) => {
   let questionId = parseInt(req.params.id);
   db.any(
-    `SELECT decoys, d.correct_ans
+    `SELECT decoys, d.correct_ans, d.question_id
 FROM answers AS d
 JOIN questions AS q ON q.id = d.question_id
 FULL JOIN
