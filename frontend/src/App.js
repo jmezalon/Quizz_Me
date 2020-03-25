@@ -19,6 +19,11 @@ class App extends React.Component {
     title: "",
     topic: ""
   };
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    axios.post("/quizzes", {title : this.state.title})
+  }
   handleSublist = () => {
     this.setState({ showList: true, showList2: false });
   };
@@ -90,6 +95,7 @@ class App extends React.Component {
                 title={title}
                 topic={topic}
                 handleChange={this.handleChange}
+                handleSubmit={this.handleSubmit}
                 addOne={this.addOne}
                 addFive={this.addFive}
               />

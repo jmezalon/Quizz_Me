@@ -5,7 +5,7 @@ import { NewQuizForm } from "./NewQuizForm";
 
 class CreateQuiz extends React.Component {
   render() {
-    const { amount, title, topic, handleChange, addOne, addFive } = this.props;
+    const { amount, title, topic, handleChange, addOne, addFive, handleSubmit } = this.props;
     return (
       <div className="new-quiz">
         <h2>Create your own quiz</h2>
@@ -15,6 +15,7 @@ class CreateQuiz extends React.Component {
           title={title}
           topic={topic}
           handleChange={handleChange}
+          handleSubmit={handleSubmit}
           addOne={addOne}
           addFive={addFive}
         />

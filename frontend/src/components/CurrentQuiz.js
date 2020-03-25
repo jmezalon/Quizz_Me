@@ -7,6 +7,7 @@ class CurrentQuiz extends React.Component {
     decoys: [],
     start: 0,
     next: false,
+    q_id: "",
     instruction: "try to guess at least one before clicking next",
     correct: false,
     encouragement: false
@@ -53,9 +54,9 @@ class CurrentQuiz extends React.Component {
     setTimeout(this.setState({ next: false }), 3000);
   };
 
-  // componentDidMount() {
-  //   this.getDecoysAndAnswer(1);
-  // }
+  componentDidMount() {
+    this.getDecoysAndAnswer(parseInt(this.props.match.params.id));
+  }
 
   render() {
     let theDecoys;
@@ -102,15 +103,10 @@ class CurrentQuiz extends React.Component {
       return dec;
     });
 
-    // console.log(this.state.decoys);
-
     let questionDisplay = questions.map(question => {
       if (question.quest_type) {
         return (
-          <ul
-            key={question.id}
-            onClick={() => this.getDecoysAndAnswer(question.id)}
-          >
+          <ul key={question.id}>
             <li>{question.quest_input}</li>
 
             {this.state.decoys[0] &&
@@ -137,17 +133,33 @@ class CurrentQuiz extends React.Component {
         return null;
       }
     });
-
+    // console.log(questions.map(id => id.id));
     return (
       <>
         {quizDisplay}
         <div onClick={this.resetNext}> {questionDisplay[this.state.start]}</div>
-        <h6 onClick={this.showNextQuestion}>Next</h6>
+
         {this.state.start > 0 ? (
-          <h6 onClick={this.showPreviousQuestion}>Previous</h6>
+          <span
+            onClick={() => {
+              this.getDecoysAndAnswer(this.state.q_id);
+              this.showPreviousQuestion();
+            }}
+          >
+            Previous
+          </span>
         ) : (
           ""
         )}
+        {"      "}
+        <span
+          onClick={() => {
+            this.getDecoysAndAnswer(this.state.q_id);
+            this.showNextQuestion();
+          }}
+        >
+          Next
+        </span>
       </>
     );
   }

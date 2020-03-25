@@ -6,11 +6,15 @@ export const NewQuizForm = ({
   amount,
   addOne,
   addFive,
-  handleChange
+  handleChange,
+  handleSubmit
 }) => {
+
+  
+
   return (
     <div className="newquiz-form">
-      <form>
+      <form onSubmit={handleSubmit}>
         <p>start by selecting a topic for your quiz!</p>
         <input
           name="topic"
